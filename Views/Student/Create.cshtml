@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html >
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>SMS</title>
+        </head>
+    <body>
+        <div class="text-center">
+            <h1 class="display-6">STUDENT MANAGEMENT SYSTEM</h1>
+        </div>
+        <form>
+            <label for="Id">Id:</label>
+        <input type="number" id="Id" name="Id" /><br /><br />
+            <label for="Name">Name:</label>
+        <input type="text" id="Name" name="Name" /><br /><br />
+            <label for="Age">Age:</label>
+        <input type="number" id="Age" name="Age" /><br /><br />
+            <label for="Program">Program:</label>
+            <select id="Program" name="StudentProgram">
+                <option value="Bsc. CSIT">Bsc.CSIT</option>
+                <option value="BCA">BCA</option>
+        </select><br /><br />
+            <label for="Semester">Semester:</label>
+            <select id="Semester" name="StudentSemester">
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>6</option>
+                <option value=7>7</option>
+                <option value=8>8</option>
+        </select><br /><br />
+            <label for="TotalMarks">TotalMarks</label>
+        <input type="number" id="TotalMarks" name="TotalMarks" /><br /><br />
+        <label for="Program">Program:</label>
+        <select id="StudentType" name="StudentType">
+            <option value="Normal">Normal</option>
+            <option value="Scholorship">Scholorship</option>
+        </select><br /><br />
+        <div id="ScholorStudent" style="display:none">
+            <label for="ScholorshipAmt">ScholorshipAmt</label>
+            <input type="number" id="ScholorshipAmt" name="ScholorshipAmt" />
+        </div><br /><br />
+        </form>
+        <script>
+            document.getElementById('StudentType').addEventListener('change',function()
+            {
+                var section=document.getElementById('ScholorStudent')
+                {
+                    if(this.value=="Scholorship")
+                    {
+                        section.style.display="block";
+                    }
+                    else{
+                                section.style.display="none";
+                                document.getElementById("ScholorshipAmt").value='';
+
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
