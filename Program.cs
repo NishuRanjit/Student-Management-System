@@ -1,3 +1,9 @@
+using Microsoft.EntityFrameworkCore;
+using SMS.Infrastructure.Data;
+using SMS.Application.Interfaces;
+
+
+
 namespace Student_Management_System
 {
     public class Program
@@ -8,6 +14,8 @@ namespace Student_Management_System
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<SmsDbContext>(options => options.UseSqlServer(
+                builder.Configuration.GetConnectionString("Default connection")));
 
             var app = builder.Build();
 
