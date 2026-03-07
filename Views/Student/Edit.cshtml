@@ -1,0 +1,11 @@
+﻿@model SMS.Domain.Entities.Student
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="Id" />
+
+    <input asp-for="Name" />
+    <input asp-for="Program" />
+    <input asp-for="Age" />
+
+    <button type="submit">Update</button>
+</form>

@@ -1,0 +1,27 @@
+﻿@model IEnumerable<SMS.Domain.Entities.Student>
+
+<a asp-action="Create">Create New</a>
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Program</th>
+        <th>Age</th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Program</td>
+            <td>@item.Age</td>
+            <td>
+                <a asp-action="Detail" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>

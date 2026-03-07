@@ -1,0 +1,10 @@
+﻿@model SMS.Domain.Entities.Student
+
+<h3>Are you sure you want to delete?</h3>
+
+<p>@Model.Name</p>
+
+<form asp-action="DeleteConfirmed">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit">Delete</button>
+</form>

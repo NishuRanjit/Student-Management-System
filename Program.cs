@@ -1,6 +1,12 @@
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using SMS.Infrastructure.Data;
+using Microsoft.Extensions.DependencyInjection;
 using SMS.Application.Interfaces;
+using SMS.Application.Mapping;
+using SMS.Application.Services;
+using SMS.Infrastructure.Data;
+using SMS.Infrastructure.Repositories;
+using SMS.Infrastructure.Unit_Of_Work;
 
 
 
@@ -16,11 +22,17 @@ namespace Student_Management_System
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<SmsDbContext>(options => options.UseSqlServer(
                 builder.Configuration.GetConnectionString("Default connection")));
+            builder.Services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
+            builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
+            builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+            builder.Services.AddScoped<IStudentService, StudentService>();
+            builder.Services.AddAutoMapper(typeof(StudentProfile));
 
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
+
             {
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
@@ -36,9 +48,10 @@ namespace Student_Management_System
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Student}/{action=Create}/{id?}");
+                pattern: "{controller=Student}/{action=Index}/{id?}");
 
             app.Run();
         }
+       
     }
 }

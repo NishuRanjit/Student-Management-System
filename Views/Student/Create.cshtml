@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html >
+﻿@model SMS.Application.DTOs.StudentCreateDTO
+<!DOCTYPE html >
 <html>
     <head>
         <meta charset="utf-8" />
@@ -8,20 +9,19 @@
         <div class="text-center">
             <h1 class="display-6">STUDENT MANAGEMENT SYSTEM</h1>
         </div>
-        <form>
-            <label for="Id">Id:</label>
-        <input type="number" id="Id" name="Id" /><br /><br />
+        <form asp-action="Create" method="post">
+            
             <label for="Name">Name:</label>
         <input type="text" id="Name" name="Name" /><br /><br />
             <label for="Age">Age:</label>
         <input type="number" id="Age" name="Age" /><br /><br />
             <label for="Program">Program:</label>
-            <select id="Program" name="StudentProgram">
+            <select id="Program" name="Program">
                 <option value="Bsc. CSIT">Bsc.CSIT</option>
                 <option value="BCA">BCA</option>
         </select><br /><br />
             <label for="Semester">Semester:</label>
-            <select id="Semester" name="StudentSemester">
+            <select id="Semester" name="Semester">
                 <option value=1>1</option>
                 <option value=2>2</option>
                 <option value=3>3</option>
@@ -39,28 +39,31 @@
             <option value="Scholorship">Scholorship</option>
         </select><br /><br />
         <div id="ScholorStudent" style="display:none">
-            <label for="ScholorshipAmt">ScholorshipAmt</label>
-            <input type="number" id="ScholorshipAmt" name="ScholorshipAmt" />
+            <label for="ScholorshipAmount">ScholorshipAmount</label>
+            <input type="number" id="ScholorshipAmount" name="ScholorshipAmount" />
         </div><br /><br />
+        <button type="submit">Submit</button>
         </form>
+
         <script>
             document.getElementById('StudentType').addEventListener('change',function()
             {
                 var section=document.getElementById('ScholorStudent')
-                {
+                
                     if(this.value=="Scholorship")
                     {
                         section.style.display="block";
                     }
                     else{
                                 section.style.display="none";
-                                document.getElementById("ScholorshipAmt").value='';
+                                document.getElementById("ScholorshipAmount").value='';
 
                     }
-                }
+                
             });
            
         </script>
-        <button type="submit">Submit</button>
+    <a asp-action="Index">Home</a>
+       
     </body>
 </html>
